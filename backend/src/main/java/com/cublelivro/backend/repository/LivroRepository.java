@@ -1,5 +1,5 @@
-package repository;
-import model.Livro;
+package com.cublelivro.backend.repository;
+import com.cublelivro.backend.model.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
