@@ -1,0 +1,32 @@
+<h2>Acervo do Clube do Livro</h2>
+<table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Dono</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (livro of livros; track livro.id) {
+      <tr>
+        <td>{{ livro.id }}</td>
+        <td>{{ livro.titulo }}</td>
+        <td>{{ livro.dono }}</td>
+        <td><strong>{{ livro.status }}</strong></td>
+        <td>
+          @if (livro.status === 'DISPONIVEL') {
+            <button (click)="emprestar(livro.id!)">Emprestar</button>
+          } @else if (livro.status === 'EMPRESTADO') {
+            <button (click)="devolver(livro.id!)">Devolver</button>
+          }
+          <button (click)="deletar(livro.id!)" style="margin-left: 5px; color: red;">Excluir</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="5">Nenhum livro encontrado no banco de dados.</td></tr>
+    }
+  </tbody>
+</table>
